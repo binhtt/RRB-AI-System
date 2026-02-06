@@ -20,11 +20,15 @@ Contexts define system states, rules, actions, guards, and evolution constraints
 ## Repository Structure
 model/
 ├── context/ # Event-B contexts (.buc)
+
 └── machine/ # Event-B machines (.bum)
+
 docs/
 └── figures/ # Architecture diagrams and screenshots
+
 rodin-project/
 └── RRB-AI-System.zip # Importable Rodin project (if provided)
+
 ## Requirements
 - Rodin Platform (Event-B IDE): https://www.event-b.org/
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+    <org.eventb.core.extendsContext name="'" org.eventb.core.target="RRB-AI-Abstract"/>
+    <org.eventb.core.constant name="(" org.eventb.core.identifier="isConflict"/>
+    <org.eventb.core.constant name=")" org.eventb.core.identifier="isRedundant"/>
+    <org.eventb.core.axiom name="*" org.eventb.core.label="axm1" org.eventb.core.predicate="isConflict ∈ RULE × RULE → BOOL"/>
+    <org.eventb.core.axiom name="+" org.eventb.core.label="axm2" org.eventb.core.predicate="isRedundant ∈ RULE × RULE → BOOL"/>
+    <org.eventb.core.axiom name="," org.eventb.core.label="axm3" org.eventb.core.predicate="∀r · r ∈ RULE ⇒ isConflict(r↦ r) = FALSE"/>
+    <org.eventb.core.axiom name="-" org.eventb.core.label="axm4" org.eventb.core.predicate="∀r1, r2 · r1 ∈ RULE ∧ r2 ∈ RULE ⇒&#13;&#10;                    (isConflict(r1↦ r2) = TRUE ⇔ isConflict(r2↦ r1) = TRUE)"/>
+</org.eventb.core.contextFile>

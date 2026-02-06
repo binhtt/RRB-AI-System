@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+    <org.eventb.core.carrierSet name="'" org.eventb.core.identifier="STATE"/>
+    <org.eventb.core.carrierSet name="(" org.eventb.core.identifier="RULE"/>
+    <org.eventb.core.constant name=")" org.eventb.core.identifier="InitStates"/>
+    <org.eventb.core.carrierSet name="*" org.eventb.core.identifier="ACTION"/>
+    <org.eventb.core.constant name="+" org.eventb.core.identifier="SafeStates"/>
+    <org.eventb.core.constant name="," org.eventb.core.identifier="guard"/>
+    <org.eventb.core.constant name="-" org.eventb.core.identifier="effect"/>
+    <org.eventb.core.constant name="." org.eventb.core.identifier="apply"/>
+    <org.eventb.core.axiom name="/" org.eventb.core.label="axm1" org.eventb.core.predicate="InitStates ⊆ STATE"/>
+    <org.eventb.core.axiom name="0" org.eventb.core.label="axm2" org.eventb.core.predicate="SafeStates ⊆ STATE"/>
+    <org.eventb.core.axiom name="1" org.eventb.core.label="axm3" org.eventb.core.predicate="guard ∈ RULE × STATE → BOOL"/>
+    <org.eventb.core.axiom name="2" org.eventb.core.label="axm4" org.eventb.core.predicate="effect ∈ RULE × STATE → ACTION"/>
+    <org.eventb.core.axiom name="3" org.eventb.core.label="axm5" org.eventb.core.predicate="apply ∈ ACTION × STATE → STATE"/>
+    <org.eventb.core.axiom name="4" org.eventb.core.label="axm6" org.eventb.core.predicate="∀r, s · r ∈ RULE ∧ s ∈ STATE ⇒&#13;&#10;            apply(effect(r↦s)↦ s) ∈ STATE"/>
+    <org.eventb.core.axiom name="5" org.eventb.core.label="axm7" org.eventb.core.predicate="∀r, s · r ∈ RULE ∧ s ∈ SafeStates ∧ guard(r↦ s) = TRUE ⇒&#13;&#10;            apply(effect(r↦ s)↦ s) ∈ SafeStates"/>
+    <org.eventb.core.axiom name="6" org.eventb.core.label="axm8" org.eventb.core.predicate="InitStates ⊆ SafeStates"/>
+    <org.eventb.core.axiom name="7" org.eventb.core.label="axm9" org.eventb.core.predicate="InitStates ≠ ∅"/>
+    <org.eventb.core.axiom name="8" org.eventb.core.label="axm10" org.eventb.core.predicate="SafeStates ≠ ∅"/>
+</org.eventb.core.contextFile>

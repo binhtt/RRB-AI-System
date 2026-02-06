@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="state :∈ InitStates" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="rules ≔ ∅" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="enabledRules ≔ ∅" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.refinesMachine name="(" org.eventb.core.target="RRB_AI_Controller"/>
+    <org.eventb.core.seesContext name=")" org.eventb.core.target="RRB_AI_Extended"/>
+    <org.eventb.core.variable name="*" org.eventb.core.identifier="state"/>
+    <org.eventb.core.variable name="+" org.eventb.core.identifier="rules"/>
+    <org.eventb.core.variable name="," org.eventb.core.identifier="enabledRules"/>
+    <org.eventb.core.invariant name="-" org.eventb.core.label="inv1" org.eventb.core.predicate="∀r1, r2 ·&#13;&#10;            r1 ∈ rules ∧ r2 ∈ rules ∧ r1 ≠ r2 ⇒&#13;&#10;            isConflict(r1↦ r2) = FALSE"/>
+    <org.eventb.core.invariant name="." org.eventb.core.label="inv2" org.eventb.core.predicate="∀r · r ∈ rules ⇒&#13;&#10;            ¬(∃r_prime · r_prime ∈ rules ∧ r_prime ≠ r ∧&#13;&#10;                isRedundant(r↦ r_prime) = TRUE)"/>
+    <org.eventb.core.event name="/" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="EvaluateRules">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="EvaluateRules"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="enabledRules ≔ { r ∣ r ∈ rules ∧ guard(r↦ state) = TRUE }" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="0" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="React">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="React"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="r"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="r ∈ enabledRules"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="state ≔ apply(effect(r↦ state)↦ state)" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="1" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="AddRule">
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="r ∈ RULE"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd2" org.eventb.core.predicate="r ∉ rules"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd3" org.eventb.core.predicate="∀r_prime · r_prime ∈ rules ⇒ isConflict(r↦ r_prime) = FALSE"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.identifier="r"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd4" org.eventb.core.predicate="∀r_prime · r_prime ∈ rules ⇒ isRedundant(r↦ r_prime) = FALSE"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="rules ≔ rules ∪ {r}" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="2" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="RemoveRule">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="r"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="r ∈ rules"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="rules ≔ rules ∖ {r}" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

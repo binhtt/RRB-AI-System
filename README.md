@@ -1,6 +1,3 @@
-# RRB-AI-System
-
-Formal Event-B models for correctness-preserving rule evolution in Reactive Rule-Based Artificial Intelligence (RRB-AI) systems.
 
 ## Overview
 This repository provides a refinement-based Event-B framework for modelling reactive rule-based AI systems and analysing correctness preservation under rule evolution.  
@@ -8,27 +5,15 @@ The models capture rule execution semantics, safety invariants, and admissible e
 
 The work focuses on safety-critical reactive AI scenarios where rule bases evolve over time while correctness properties must remain preserved.
 
-## Model Structure
-The Event-B development follows a layered refinement strategy:
+### Model Structure
+**Contexts**
+- **RRB-AI-Abstract** – core abstract sets, guards, effects, and safety invariants
+- **RRB_AI_Extended** – rule-conflict and redundancy constraints for evolution
 
-- **RRB-AI-Abstract** — Abstract semantic model of reactive rule execution.
-- **RRB_AI_Controller** — Controller-level refinement introducing rule evaluation and enabled rules.
-- **RRB_AI_Evolution** — Evolution refinement supporting dynamic rule updates with conflict and redundancy constraints.
-
-Contexts define system states, rules, actions, guards, and evolution constraints.
-
-## Repository Structure
-model/
-
-├── context/ # Event-B contexts (.buc)
-
-└── machine/ # Event-B machines (.bum)
-
-docs/
-└── figures/ # Architecture diagrams and screenshots
-
-rodin-project/
-└── RRB-AI-System.zip # Importable Rodin project (if provided)
+**Machines**
+- **RRB-AI-Abstract-Machine** – abstract reactive execution semantics
+- **RRB_AI_Controller** – rule evaluation and enabled-rule selection
+- **RRB_AI_Evolution** – rule evolution with invariant preservation
 
 ## Requirements
 - Rodin Platform (Event-B IDE): https://www.event-b.org/

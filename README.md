@@ -19,6 +19,7 @@ Contexts define system states, rules, actions, guards, and evolution constraints
 
 ## Repository Structure
 model/
+
 ├── context/ # Event-B contexts (.buc)
 
 └── machine/ # Event-B machines (.bum)
